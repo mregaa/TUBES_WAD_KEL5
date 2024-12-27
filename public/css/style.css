@@ -1,3 +1,12 @@
+#logincss {
+    border-radius: 4px;
+    margin-right: 16px;
+}
+
+#registercss{
+    border-radius: 4px;
+}
+
 /********** Template CSS **********/
 :root {
     --primary: #3CB815;
@@ -66,6 +75,7 @@
 .btn-sm-square {
     width: 32px;
     height: 32px;
+    margin-right: 32px;
 }
 
 .btn-lg-square {
