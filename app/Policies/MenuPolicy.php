@@ -29,7 +29,7 @@ class MenuPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class MenuPolicy
      */
     public function update(User $user, menu $menu): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class MenuPolicy
      */
     public function delete(User $user, menu $menu): bool
     {
-        return false;
+        return true;
     }
 
     /**
