@@ -1,9 +1,14 @@
 <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
-            <div class="col-lg-6 px-5 text-start">
+            <div class="col-lg-10 px-5 text-start">
                 <small><i class="fa fa-map-marker-alt me-2"></i>Telkom University</small>
                 <small class="ms-4"><i class="fa fa-envelope me-2"></i>telueats@gmail.com</small>
             </div>
+            @if(Auth::user())
+            <div class="col-lg-2">
+                @include('navigation-menu')
+            </div>
+            @endif
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
@@ -37,14 +42,15 @@
                         @if (Route::has('login'))
 
                         @auth
-                        <a> 
+                        <a>
                             <x-app-layout>
                             </x-app-layout>
                         </a>
                         @else
                         <a class="btn btn-primary" id='logincss' href="{{ route('login') }}">Login</a>
                         <a class="btn btn-secondary" id='registercss' href="{{ route('register') }}">Register</a>
-                        @endauth
+
+              @endauth
                         @endif
             </div>
         </nav>

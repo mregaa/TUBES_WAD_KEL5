@@ -42,11 +42,11 @@
             overflow: hidden;
         }
 
-        .table th {
+        /* .table th {
             background-color: #38b2ac;
             color: white;
             text-align: center;
-        }
+        } */
 
         .table td {
             vertical-align: middle;
@@ -57,7 +57,7 @@
 
 
 
-<body>
+<body class="container my-5 bg-light bg-icon">
 {{-- Success Alert --}}
 @if (session('success'))
 <div class="mb-4 bg-green-500 text-white p-4 rounded-md">
@@ -70,16 +70,13 @@
 </div>
 @endif
 
+@include('home.navbar')
     <div class="container my-5">
-        <h1 class="text-center mb-4" style="color: #38a169;">Daftar Menu</h1>
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 style="color: #2f855a;">Menu Kami</h2>
-            <a href="{{ route('manage_menu_sell.create') }}" class="btn btn-primary">Tambah Menu</a>
-        </div>
+        <h1 class="text-center display-5 mb-3" style="color: #000000;">Daftar Menu</h1>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
-                    <tr>
+                    <tr class="bg-primary text-white text-center">
                         <th>Foto</th>
                         <th>Nama Menu</th>
                         <th>Jumlah Tersedia</th>
@@ -110,6 +107,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="{{ route('manage_menu_sell.create') }}" class="btn btn-primary">Tambah Menu</a>
         </div>
     </div>
 
