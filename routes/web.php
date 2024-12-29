@@ -28,4 +28,4 @@ Route::delete('/manage/sell/destroy/{menu}',
 
 
 // ================== Handle Routes Manage Menu Sell =========================
-route::get('/redirect', [HomeController::class,'redirect']);
+route::get('/redirect', [HomeController::class,'redirect'])->name('redirect');
