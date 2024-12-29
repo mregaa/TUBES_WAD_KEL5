@@ -127,7 +127,7 @@
 
 <body>
     <!-- Back Button -->
-    <a href="{{ route('manage_menu_sell.index') }}"  class="btn-back">Back to Menu</a>
+    <a href="{{ route('redirect') }}"  class="btn-back">Back to Menu</a>
 
     <h1>View Menu</h1>
 
@@ -176,13 +176,6 @@
                     <option value="tidak_tersedia">Tidak Tersedia</option>
                 </select>
                 @error('status')
-                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="tenantCode" class="form-label">Kode Tenant</label>
-                <input type="text" class="form-control" name="kode_tenant" id="tenantCode" placeholder="Masukkan kode tenant" value="{{ old('kode_tenant',$menu->kode_tenant) }}">
-                @error('kode_tenant')
                 <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                 @enderror
             </div>
