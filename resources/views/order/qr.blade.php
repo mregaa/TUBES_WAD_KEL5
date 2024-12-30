@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Cart</title>
+    <title>Homepage</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -29,25 +29,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
-    <style type="text/css">
-
-        body {
-            background-color: #f0fdf4;
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .table {
-            background-color: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .table td {
-            vertical-align: middle;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -56,53 +37,25 @@
         <div class="spinner-border text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
-    @if(session('message'))
-    <div class="alert alert-success" style='margin-top:100px;'>
-        {{ session('message') }}
-    </div>
-    @endif
+
 
     <!-- Navbar Start -->
     @include('home.navbar')
     <!-- Navbar End -->
-    
-    <div class="container my-5">
-        <h1 class="text-center display-5 mb-3" style="color: #000000;">Keranjang</h1>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr class="bg-primary text-white text-center">
-                        <th>Foto</th>
-                        <th>Nama Menu</th>
-                        <th>Jumlah</th>
-                        <th>Harga</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
 
-                    <?php $totalPrice = 0; ?>
-                    @foreach ($carts as $cart)
-                    <tr>
-                        <td><img src="{{ $cart->image }}" alt="Menu" class="img-thumbnail" style="width: 200px;"></td>
-                        <td>{{ $cart->menu_nama}}</td>
-                        <td>{{ $cart->quantity}}</td>
-                        <td>Rp. {{number_format($cart->price, 0, ',', '.')}}</td>
-                        <td>
-                            <a class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus menu ini?')" href="{{url('/remove_cart',$cart->id)}}">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php $totalPrice = $totalPrice + $cart->price; ?>
-                    @endforeach
-
-                </tbody>
-            </table>
-            <div>
-                <h1 style='font-size: 25px; padding-bottom: 25px'>Total Price: Rp. {{number_format($totalPrice,0,',','.')}} </h1>
-            </div>
-            <div>
-                <h1 style='font-size: 25px; padding-bottom: 15px'>Checkout Pesanan</h1>
-                <a href="{{url('qr')}}" class="btn btn-primary" id="rounded-square">Bayar dengan QR</a>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                        <img class="img-fluid w-100" src="img/qr-code.png">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-5 mb-4">Pembayaran</h1>
+                    <p class="mb-4">Silahkan Bayar QR Code Disamping</p>
+                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="{{url('payment')}}">Selesai</a>
+                </div>
             </div>
         </div>
     </div>
