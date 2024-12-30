@@ -27,4 +27,9 @@ class HomeController extends Controller
             return view('home.userpage',compact("menus"));
         }
     }
+
+    public function product_details($id){
+        $menu = Menu::find($id);
+        return view('home.product_details',compact('menu'));
+    }
 }
