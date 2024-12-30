@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="text-center p-4">
                                     <a class="d-block h5 mb-2" href="">{{ $menu->nama_menu }}</a>
-                                    <span class="text-primary me-1">{{ $menu->harga}}</span>
+                                    <span class="text-primary me-1">Rp. {{ number_format($menu->harga, 0, ',', '.')}}</span>
                                     <span class="text-muted d-block">{{ $menu->deskripsi}}</span>
                                     {{-- <span class="text-body text-decoration-line-through">$29.00</span> --}}
                                 </div>
@@ -37,7 +37,7 @@
                                         <a class="text-body" href="{{url('product_details',$menu->id)}}"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
                                     </small>
                                     <small class="w-50 text-center py-2 d-flex align-items-center justify-content-center">
-                                        <form action="{{ url('add_cart') }}" method="POST" class="d-flex align-items-center">
+                                        <form action="{{ url('add_cart', $menu->id) }}" method="POST" class="d-flex align-items-center">
                                             @csrf
                                             <input type="number" name="quantity" value="1" min="1" class="form-control me-2" style="width: 60px;">
                                             <button type="submit" class="btn btn-primary">
@@ -50,10 +50,6 @@
                             </div>
                         </div>
                         @endforeach
-
-                        <div class="col-12 text-center">
-                            <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Products</a>
-                        </div>
                     </div>
                 </div>
             </div>
