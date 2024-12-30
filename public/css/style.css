@@ -1,6 +1,7 @@
 #logincss {
     border-radius: 4px;
     margin-right: 16px;
+    margin-left: 32px;
 }
 
 #registercss{
@@ -75,7 +76,6 @@
 .btn-sm-square {
     width: 32px;
     height: 32px;
-    margin-right: 32px;
 }
 
 .btn-lg-square {

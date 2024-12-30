@@ -2,9 +2,8 @@
 <html lang="en">
 
 <head>
-    <base href="/public">
     <meta charset="utf-8">
-    <title>Product Details</title>
+    <title>Cart</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -30,6 +29,25 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+
+        body {
+            background-color: #f0fdf4;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .table {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -44,36 +62,43 @@
     @include('home.navbar')
     <!-- Navbar End -->
 
-    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" style="margin: auto; width:25%; margin-top:200px">
-        
-        <div class="product-item">
-            <div class="position-relative bg-light overflow-hidden">
-                <img class="img-fluid w-100" src="{{ $menu->image }}" alt="">
-                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">{{ $menu->kode_tenant }}</div>
-            </div>
-            <div class="text-center p-4">
-                <a class="d-block h5 mb-2">{{ $menu->nama_menu }}</a>
-                <span class="text-primary me-1">Harga: Rp. {{ number_format($menu->harga, 0, ',', '.')}}</span>
-                <span class="text-muted d-block">{{ $menu->deskripsi}}</span>
-                <span class="text-muted d-block">Stok Tersisa: {{ $menu->stok}}</span>
-                <span class="text-muted d-block">{{ $menu->status}}</span>
-            </div>
-            <div class="d-flex border-top">
-            </div>
-            <div class="d-flex border-top">
+    <div class="container my-5">
+        <h1 class="text-center display-5 mb-3" style="color: #000000;">Keranjang</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-primary text-white text-center">
+                        <th>Foto</th>
+                        <th>Nama Menu</th>
+                        <th>Jumlah</th>
+                        <th>Harga</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            <small class="w-100 text-center py-2 d-flex align-items-center justify-content-center">
-                <form action="{{ url('add_cart', $menu->id) }}" method="POST" class="d-flex align-items-center">
-                    @csrf
-                    <input type="number" name="quantity" value="1" min="1" class="form-control me-2" style="width: 60px;">
-                    <button type="submit" class="btn btn-primary">
-                        <a class="text-body"></a><i class="fa fa-shopping-bag text-white me-2"></i>Add to cart
-                    </button>
-                </form>
-            </small>
+                    <?php $totalPrice = 0; ?>
+                    @foreach ($carts as $cart)
+                    <tr>
+                        <td><img src="{{ $cart->image }}" alt="Menu" class="img-thumbnail" style="width: 200px;"></td>
+                        <td>{{ $cart->menu_nama}}</td>
+                        <td>{{ $cart->quantity}}</td>
+                        <td>Rp. {{number_format($cart->price, 0, ',', '.')}}</td>
+                        <td>
+                            <a class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus menu ini?')" href="{{url('/remove_cart',$cart->id)}}">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php $totalPrice = $totalPrice + $cart->price; ?>
+                    @endforeach
+
+                </tbody>
+            </table>
+            <div>
+                <h1>Total Price: Rp. {{number_format($totalPrice,0,',','.')}} </h1>
             </div>
         </div>
     </div>
+
     <!-- Footer Start -->
     @include('home.footer')
     <!-- Footer End -->
