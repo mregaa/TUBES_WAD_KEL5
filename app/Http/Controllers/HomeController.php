@@ -12,7 +12,8 @@ class HomeController extends Controller
 {
 
     public function index() {
-        return view('home.userpage');
+        $menus = Menu::all();
+        return view('home.userpage',compact("menus"));
     }
     public function redirect(){
         $usertype = Auth::user()->usertype;
@@ -22,7 +23,8 @@ class HomeController extends Controller
             return view('manage_sell_menu.index', compact("menus"));
         }
         else {
-            return view('home.userpage');
+            $menus = Menu::all();
+            return view('home.userpage',compact("menus"));
         }
     }
 }
