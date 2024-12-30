@@ -4,25 +4,19 @@
                 <small><i class="fa fa-map-marker-alt me-2"></i>Telkom University</small>
                 <small class="ms-4"><i class="fa fa-envelope me-2"></i>telueats@gmail.com</small>
             </div>
-            @if(Auth::user())
-            <div class="col-lg-2">
-                @include('navigation-menu')
-            </div>
-            @endif
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-            <a href="dashboard" class="navbar-brand ms-4 ms-lg-0">
-                <h1 class="fw-bold text-primary m-0">F<span class="text-secondary">oo</span>dy</h1>
+            <a href="/" class="navbar-brand ms-4 ms-lg-0">
+                <h1 class="fw-bold text-primary m-0">Telu<span class="text-secondary">Eats</span></h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.html" class="nav-item nav-link active">Dashboard</a>
+                    <a href="#menu" class="nav-item nav-link">Menu</a>
                     <a href="about.html" class="nav-item nav-link">About Us</a>
-                    <a href="product.html" class="nav-item nav-link">Catalogs</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">

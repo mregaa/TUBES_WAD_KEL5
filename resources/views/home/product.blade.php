@@ -1,4 +1,4 @@
-<div class="container-xxl py-5">
+<div class="container-xxl py-5" id='menu'>
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
                 <div class="col-lg-6">
@@ -10,19 +10,13 @@
                 <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                     <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                         <li class="nav-item me-2">
-                            <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill" href="#tab-1">Vegetable</a>
-                        </li>
-                        <li class="nav-item me-2">
-                            <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-2">Fruits </a>
-                        </li>
-                        <li class="nav-item me-0">
-                            <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-3">Fresh</a>
+                            <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill" href="#all">All</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="tab-content">
-                <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div id="all" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
 
                         @foreach ($menus as $menu)
@@ -39,17 +33,23 @@
                                     {{-- <span class="text-body text-decoration-line-through">$29.00</span> --}}
                                 </div>
                                 <div class="d-flex border-top">
-                                    <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                    <small class="w-50 text-center py-2 d-flex align-items-center justify-content-center">
+                                        <a class="text-body" href="{{url('product_details',$menu->id)}}"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
                                     </small>
-                                    <small class="w-50 text-center py-2">
-                                        <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                                    <small class="w-50 text-center py-2 d-flex align-items-center justify-content-center">
+                                        <form action="{{ url('add_cart') }}" method="POST" class="d-flex align-items-center">
+                                            @csrf
+                                            <input type="number" name="quantity" value="1" min="1" class="form-control me-2" style="width: 60px;">
+                                            <button type="submit" class="btn btn-primary">
+                                                <a class="text-body"></a><i class="fa fa-shopping-bag text-white me-2"></i>Add to cart
+                                            </button>
+                                        </form>
                                     </small>
+
                                 </div>
                             </div>
                         </div>
                         @endforeach
-
 
                         <div class="col-12 text-center">
                             <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Products</a>
