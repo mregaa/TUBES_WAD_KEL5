@@ -36,7 +36,7 @@
                 </a>
                 @else
                 <a class="btn btn-primary" id='logincss' href="{{ route('login') }}">Login</a>
-                <a class="btn btn-secondary" id='registercss' href="{{ route('register') }}">Register</a>
+                <a class="btn btn-secondary" id='rounded-square' href="{{ route('register') }}">Register</a>
 
                 @endauth
                 @endif

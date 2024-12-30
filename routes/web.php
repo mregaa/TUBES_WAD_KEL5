@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 route::get('/', [HomeController::class,'index']);
 
@@ -33,5 +34,9 @@ Route::get('/product_details/{id}', [HomeController::class, 'product_details']);
 
 // ================== Handle Routes Cart =========================
 Route::post('/add_cart/{id}', [CartController::class, 'add_cart']);
-Route::get('/show_cart', [CartController::class, 'show_cart']);
+Route::get('/show_cart', [CartController::class, 'show_cart'])->name('cart.show');
 Route::get('/remove_cart/{id}', [CartController::class, 'remove_cart']);
+
+
+Route::get('/payment', [OrderController::class, 'payment']);
+Route::get('/qr', [OrderController::class, 'showQr']);
