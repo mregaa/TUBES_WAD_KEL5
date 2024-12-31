@@ -16,13 +16,10 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="{{ url('/') }}#menu" class="nav-item nav-link">Menu</a>
-                    <a href="about.html" class="nav-item nav-link">About Us</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="{{ url('/') }}#about" class="nav-item nav-link">About Us</a>
+                    <a href="{{ url('/') }}#rating" class="nav-item nav-link">Ratings & Reviews</a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
-                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
-                    <small class="fa fa-search text-body"></small>
-                    </a>
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="{{url('show_cart')}}">
                         <small class="fa fa-shopping-bag text-body"></small>
                     </a>
