@@ -58,28 +58,13 @@
     @include('home.about')
     <!-- About End -->
 
-
-    <!-- Feature Start -->
-    <!-- Feature End -->
-
-
     <!-- Product Start -->
     @include('home.product')
     <!-- Product End -->
 
-
-    <!-- Firm Visit Start -->
-    <!-- Firm Visit End -->
-
-
     <!-- Testimonial Start -->
     @include('home.testimonial') 
     <!-- Testimonial End -->
-
-
-    <!-- Blog Start -->
-    <!-- Blog End -->
-
 
     <!-- Footer Start -->
     @include('home.footer')
