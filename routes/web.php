@@ -27,6 +27,10 @@ Route::get('/product_details/{id}', [HomeController::class, 'product_details']);
 // ================== Handle Routes Order =========================
 Route::get('/payment', [OrderController::class, 'payment']);
 Route::get('/qr', [OrderController::class, 'showQr']);
+Route::get('/show_orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/edit_orders/{order}', [OrderController::class, 'edit'])->name('orders.edit');
+Route::put('/udpate_orders/{order}', [OrderController::class, 'update'])->name('orders.update');
+
 
 // ================== Handle Routes Cart =========================
 Route::post('/add_cart/{id}', [CartController::class, 'add_cart']);

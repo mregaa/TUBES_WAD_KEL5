@@ -66,19 +66,28 @@
     </li>
 
     <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
-                <i class="mdi mdi-contacts"></i>
-              </span>
-              <span class="menu-title">Akun Pengguna</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('users.index')}}">Daftar Pengguna</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{route('users.create')}}">Tambah Pengguna</a></li>
-              </ul>
-            </div>
-          </li>
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+          <i class="mdi mdi-contacts"></i>
+        </span>
+        <span class="menu-title">Akun Pengguna</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{route('users.index')}}">Daftar Pengguna</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{route('users.create')}}">Tambah Pengguna</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{route('orders.index')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-chart-bar"></i>
+        </span>
+        <span class="menu-title">Order</span>
+      </a>
+    </li>
   </ul>
 </nav>
