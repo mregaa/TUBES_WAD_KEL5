@@ -53,4 +53,17 @@ class CartController extends Controller
         
         return redirect()->back();
     }
+
+    public function edit($id){
+        $cart = Cart::findOrFail($id);
+        return view('cart.edit', compact('cart'));
+    }
+
+    public function updateCart(Request $request, $id){
+        $cart = Cart::findOrFail($id);
+        $cart->quantity = $request->quantity; // Update quantity
+        $cart->save();
+
+        return redirect()->route('cart.show')->with('message', 'Quantity updated successfully!');
+    }
 }
