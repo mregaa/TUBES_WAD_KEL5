@@ -31,15 +31,15 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('admin_template/assets/images/LogoComp.png') }}">
 </head>
-
 <body>
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
+
     @if(session('message'))
-    <div class="alert alert-danger" style='margin-top:100px;'>
+    <div class="alert alert-success" style='margin-top:100px;'>
         {{ session('message') }}
     </div>
     @endif
@@ -48,38 +48,47 @@
     @include('home.navbar')
     <!-- Navbar End -->
 
+    <div class="container my-5">
+        <h1 class="text-center display-5 mb-3" style="color: #000000;">Rating & Reviews</h1>
 
-    <!-- Carousel Start -->
-    @include('home.carousel')
-    <!-- Carousel End -->
-
-
-    <!-- About Start -->
-    @include('home.about')
-    <!-- About End -->
-
-
-    <!-- Feature Start -->
-    <!-- Feature End -->
-
-
-    <!-- Product Start -->
-    @include('home.product')
-    <!-- Product End -->
-
-
-    <!-- Firm Visit Start -->
-    <!-- Firm Visit End -->
-
-
-    <!-- Testimonial Start -->
-    @include('home.testimonial') 
-    <!-- Testimonial End -->
-
-
-    <!-- Blog Start -->
-    <!-- Blog End -->
-
+        <div class="form-container">
+            <form action="{{ route('ratings.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                    @error('name')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="stars" class="form-label">Rating (1-5 Stars)</label>
+                    <select class="form-control" id="stars" name="stars" required>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="review" class="form-label">Review</label>
+                    <textarea class="form-control" id="review" name="review" rows="4" required></textarea>
+                    @error('review')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                    @error('image')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer Start -->
     @include('home.footer')
