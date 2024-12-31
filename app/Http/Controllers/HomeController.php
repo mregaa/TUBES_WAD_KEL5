@@ -32,8 +32,9 @@ class HomeController extends Controller
                 return view('home.userpage',compact("menus", 'ratings'));
             }
         } else {
+            $ratings = Rating::all();
             $menus = Menu::all();
-            return view('home.userpage',compact("menus"));
+            return view('home.userpage',compact("menus", 'ratings'));
         }
     }
 
