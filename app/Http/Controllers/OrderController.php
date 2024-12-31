@@ -11,6 +11,78 @@ use App\Models\Cart;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        $orders = Order::all();
+        return view('orders.index', compact('orders'));
+    }
+
+    // Show the form to create a new order
+    public function create()
+    {
+        return view('orders.create');
+    }
+
+    // Store a newly created order
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'nullable|string|max:15',
+            'address' => 'nullable|string',
+            'user_id' => 'nullable|string',
+            'menu_nama' => 'nullable|string|max:255',
+            'quantity' => 'nullable|string|max:255',
+            'price' => 'nullable|string|max:255',
+            'image' => 'nullable|string',
+            'menu_id' => 'nullable|string|max:255',
+            'payment_status' => 'nullable|string|max:255',
+            'delivery_status' => 'nullable|string|max:255',
+        ]);
+
+        Order::create($request->all());
+
+        return redirect()->route('orders.index')->with('success', 'Order created successfully.');
+    }
+
+    // Show the form to edit an order
+    public function edit(Order $order)
+    {
+        return view('orders.edit', compact('order'));
+    }
+
+    // Update the specified order
+    public function update(Request $request, Order $order)
+    {
+        $request->validate([
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'nullable|string|max:15',
+            'address' => 'nullable|string',
+            'user_id' => 'nullable|string',
+            'menu_nama' => 'nullable|string|max:255',
+            'quantity' => 'nullable|string|max:255',
+            'price' => 'nullable|string|max:255',
+            'image' => 'nullable|string',
+            'menu_id' => 'nullable|string|max:255',
+            'payment_status' => 'nullable|string|max:255',
+            'delivery_status' => 'nullable|string|max:255',
+        ]);
+
+        $order->update($request->all());
+
+        return redirect()->route('orders.index')->with('success', 'Order updated successfully.');
+    }
+
+    // Delete the specified order
+    public function destroy(Order $order)
+    {
+        $order->delete();
+
+        return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
+    }
+    
     public function payment(){
         $user = Auth::user();
         $userid = $user->id;
