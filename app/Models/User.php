@@ -31,6 +31,8 @@ class User extends Authenticatable
         'phone',
         'address',
         'password',
+        'usertype',
+        'kode_tenant',
     ];
 
     /**
