@@ -89,6 +89,7 @@
                         <td>{{ $cart->quantity}}</td>
                         <td>Rp. {{number_format($cart->price, 0, ',', '.')}}</td>
                         <td>
+                            <a class="btn btn-primary" href="{{route('cart.edit',$cart->id)}}">Edit</a>
                             <a class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus menu ini?')" href="{{url('/remove_cart',$cart->id)}}">Hapus</a>
                         </td>
                     </tr>

@@ -8,7 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
 
 
-route::get('/', [HomeController::class,'index']);
+route::get('/', [HomeController::class,'redirect']);
 
 Route::middleware([
     'auth:sanctum',
@@ -24,14 +24,16 @@ Route::middleware([
 Route::get('/redirect', [HomeController::class,'redirect'])->name('redirect');
 Route::get('/product_details/{id}', [HomeController::class, 'product_details']);
 
+// ================== Handle Routes Order =========================
+Route::get('/payment', [OrderController::class, 'payment']);
+Route::get('/qr', [OrderController::class, 'showQr']);
+
 // ================== Handle Routes Cart =========================
 Route::post('/add_cart/{id}', [CartController::class, 'add_cart']);
 Route::get('/show_cart', [CartController::class, 'show_cart'])->name('cart.show');
 Route::get('/remove_cart/{id}', [CartController::class, 'remove_cart']);
-
-// ================== Handle Routes Order =========================
-Route::get('/payment', [OrderController::class, 'payment']);
-Route::get('/qr', [OrderController::class, 'showQr']);
+Route::get('/edit_cart/{id}', [CartController::class, 'edit'])->name('cart.edit');
+Route::put('/udpate_cart/{id}', [CartController::class, 'updateCart'])->name('cart.update');
 
 // ================== Handle Routes Manage Menu Sell =========================
 Route::get('/manage/sell', [MenuController::class, 'index'])->name("manage_menu_sell.index");
@@ -44,10 +46,10 @@ Route::delete('/manage/sell/destroy/{menu}',
 
 // ================== Handle Routes Admin =========================
 Route::get('/users', [AdminController::class, 'users'])->name("users.index");
-Route::get('/create', [AdminController::class, 'create'])->name("users.create");
-Route::post('/store', [AdminController::class, 'store'])->name("users.store");
-Route::get('/{user}', [AdminController::class, 'edit'])->name("users.edit");
-Route::put('/{user}', [AdminController::class, 'update'])->name("users.update");
+Route::get('/user/create', [AdminController::class, 'create'])->name("users.create");
+Route::post('/users/store', [AdminController::class, 'store'])->name("users.store");
+Route::get('/users/{user}', [AdminController::class, 'edit'])->name("users.edit");
+Route::put('/users/{user}', [AdminController::class, 'update'])->name("users.update");
 Route::delete('/destroy/{user}', [AdminController::class, 'destroy'])->name('users.destroy');
 
 
