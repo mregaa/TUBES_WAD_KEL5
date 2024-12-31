@@ -115,9 +115,9 @@ class OrderController extends Controller
 
         }
 
-        return redirect()->route('cart.show')->with('message', 'Terima kasih telah memesan disini :)');
+        return redirect()->route('rating.index')->with('message', 'Terima kasih telah memesan disini :), Silahkan berikan Rating dan Review Anda!');
     }
     public function showQr(){
-        return view('order.qr');
+        return view('orders.qr');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RatingController;
 
 
 route::get('/', [HomeController::class,'redirect']);
@@ -56,6 +57,9 @@ Route::get('/users/{user}', [AdminController::class, 'edit'])->name("users.edit"
 Route::put('/users/{user}', [AdminController::class, 'update'])->name("users.update");
 Route::delete('/destroy/{user}', [AdminController::class, 'destroy'])->name('users.destroy');
 
+// ================== Handle Routes Rating =========================
+Route::get('/rating', [RatingController::class, 'index'])->name("rating.index");
+Route::resource('ratings', RatingController::class);
 
 
 

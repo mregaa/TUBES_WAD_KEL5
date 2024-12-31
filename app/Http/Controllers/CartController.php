@@ -40,11 +40,13 @@ class CartController extends Controller
     }
 
     public function show_cart(){
-
-        $id = Auth::user()->id;
-
-        $carts = Cart::where('user_id','=',$id)->get();
-        return view('cart.showcart', compact('carts'));
+        if (Auth::check()) {
+            $id = Auth::user()->id;
+            $carts = Cart::where('user_id','=',$id)->get();
+            return view('cart.showcart', compact('carts'));
+        }else{
+            return redirect()->back()->with('message', 'Silahkan login atau register terlebih dahulu!');
+        }
     }
 
     public function remove_cart($id){
